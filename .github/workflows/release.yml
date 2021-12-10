@@ -74,8 +74,8 @@ jobs:
           echo "deploy_api=${{ secrets.DEPLOY_API }}" >> $GITHUB_ENV
           echo "deploy_cdn=${{ secrets.DEPLOY_CDN }}" >> $GITHUB_ENV
 
-      - name: Publish dotnet project
-        working-directory: ./MyApp
+      - name: Publish Blazor Client project
+        working-directory: ./MyApp.Client
         run: | 
           dotnet publish -c Release /p:DEPLOY_API=${{ env.deploy_api }} /p:DEPLOY_CDN=${{ env.deploy_cdn }}
 
@@ -83,7 +83,7 @@ jobs:
       - name: Deploy to GitHub Pages
         if: ${{ env.deploy_cdn != '' }}
         run: |
-          cd ./MyApp/bin/Release/net6.0/publish/wwwroot
+          cd ./MyApp.Client/bin/Release/net6.0/publish/wwwroot
           git init
           git add -A
           git config --local user.email "action@github.com"
@@ -96,7 +96,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           force: true
-          directory: ./MyApp/bin/Release/net6.0/publish/wwwroot
+          directory: ./MyApp.Client/bin/Release/net6.0/publish/wwwroot
 
   deploy_via_ssh:
     needs: push_to_registry
