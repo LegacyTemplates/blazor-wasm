@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Logging;
-using ServiceStack;
 using ServiceStack.Blazor;
 
 namespace MyApp.Client;
