@@ -12,6 +12,7 @@
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal
+App_Data/
 .vs/
 
 # User-specific files
