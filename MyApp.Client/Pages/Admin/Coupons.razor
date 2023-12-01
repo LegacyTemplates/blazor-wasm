@@ -1,0 +1,11 @@
+﻿@page "/admin/coupons"
+@attribute [Authorize(Roles = Roles.Admin)]
+@rendermode InteractiveAuto
+
+<Breadcrumbs class="mb-8" HomeHref="/admin">
+    <Breadcrumb>
+        Coupons
+    </Breadcrumb>
+</Breadcrumbs>
+
+<AutoQueryGrid Model="Coupon" Apis="Apis.AutoQuery<QueryCoupons>()" />
