@@ -95,6 +95,10 @@ internal sealed class PersistingRevalidatingAuthenticationStateProvider : Revali
                 {
                     UserId = userId,
                     Email = email,
+                    DisplayName = principal.GetDisplayName(),
+                    ProfileUrl = principal.GetPicture(),
+                    Roles = principal.GetRoles(),
+                    Permissions = principal.GetPermissions(),
                 });
             }
         }

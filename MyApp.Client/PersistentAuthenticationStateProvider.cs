@@ -32,9 +32,21 @@ internal class PersistentAuthenticationStateProvider : AuthenticationStateProvid
             new Claim(ClaimTypes.Name, userInfo.Email),
             new Claim(ClaimTypes.Email, userInfo.Email) ];
 
+        if (userInfo.DisplayName is not null)
+        {
+            claims.Add(new Claim(ClaimTypes.Name, userInfo.DisplayName));
+        }
         if (userInfo.ProfileUrl is not null)
         {
             claims.Add(new Claim(JwtClaimTypes.Picture, userInfo.ProfileUrl));
+        }
+        if (userInfo.Roles is not null)
+        {
+            claims.AddRange(userInfo.Roles.Select(x => new Claim(ClaimTypes.Role, x)));
+        }
+        if (userInfo.Permissions is not null)
+        {
+            claims.AddRange(userInfo.Permissions.Select(x => new Claim(JwtClaimTypes.Permission, x)));
         }
 
         authenticationStateTask = Task.FromResult(
