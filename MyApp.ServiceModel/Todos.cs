@@ -13,7 +13,7 @@ public class QueryTodos : QueryData<Todo>
 }
 
 [Tag("todos")]
-[Route("/todos", "POST")]
+[Route("/todos/create", "POST")]
 public class CreateTodo : IPost, IReturn<Todo>
 {
     [ValidateNotEmpty]
