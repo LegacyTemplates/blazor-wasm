@@ -4,7 +4,7 @@
 
 [![](https://raw.githubusercontent.com/ServiceStack/Assets/master/csharp-templates/blazor.png)](http://blazor.web-templates.io/)
 
-> Browse [source code](https://github.com/NetCoreTemplates/blazor), view live demo [blazor.web-templates.io](http://blazor.web-templates.io) and install with [dotnet-new](https://docs.servicestack.net/dotnet-new):
+> Browse [source code](https://github.com/NetCoreTemplates/blazor), view live demo [blazor-wasm.web-templates.io](http://blazor-wasm.web-templates.io) and install with [dotnet-new](https://docs.servicestack.net/dotnet-new):
 
     $ dotnet tool install -g x
 
