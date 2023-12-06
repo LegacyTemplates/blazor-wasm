@@ -80,4 +80,11 @@ select{
     background-color: transparent !important;
 }
 
+[data-collapse-off=opacity-100] {
+    opacity: 1
+}
+[data-collapsed] [data-collapse=opacity-0] {
+    opacity: 0
+}
+
 @tailwind utilities;
