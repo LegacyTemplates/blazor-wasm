@@ -20,5 +20,7 @@ public class AppHost : AppHostBase, IHostingStartup
     {
         SetConfig(new HostConfig {
         });
+
+        Plugins.RemoveAll(x => x is SharpPagesFeature);
     }
 }
