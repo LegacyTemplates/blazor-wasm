@@ -14,6 +14,33 @@
         <Using Include="ServiceStack" />
     </ItemGroup>
 
+
+    <ItemGroup>
+      <None Remove="_videos\blazor\admin.md" />
+      <None Remove="_videos\blazor\components.md" />
+      <None Remove="_videos\blazor\darkmode.md" />
+      <None Remove="_videos\blazor\tailwind.md" />
+      <None Remove="_videos\blazor\universal.md" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="_videos\blazor\admin.md">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="_videos\blazor\components.md">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="_videos\blazor\darkmode.md">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="_videos\blazor\tailwind.md">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="_videos\blazor\universal.md">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.*" />
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.*" />
