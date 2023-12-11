@@ -19,7 +19,6 @@ public class AppHost : AppHostBase, IHostingStartup
     public override void Configure(Container container)
     {
         SetConfig(new HostConfig {
-            EnableFeatures = Feature.All.Remove(Feature.Razor)
         });
     }
 }
