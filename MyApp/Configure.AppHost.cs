@@ -19,9 +19,7 @@ public class AppHost : AppHostBase, IHostingStartup
     public override void Configure(Container container)
     {
         SetConfig(new HostConfig {
+            IgnorePathInfoPrefixes = { "/appsettings", "/_framework" },
         });
-
-        Config.AllowFileExtensions.Add("json");
-        Config.AllowFileExtensions.Add("dat");
     }
 }

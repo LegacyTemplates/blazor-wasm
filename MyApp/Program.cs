@@ -82,11 +82,6 @@ app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Counter).Assembly);
 
-// Add support for serving static *.json files from WebAssembly
-IResult StaticJsonFile(HttpContext context) => Results.File(context.Request.Path.Value![1..], MimeTypes.Json);
-app.MapGet("/appsettings.json", StaticJsonFile);
-app.MapGet("/appsettings.Development.json", StaticJsonFile);
-
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
 
