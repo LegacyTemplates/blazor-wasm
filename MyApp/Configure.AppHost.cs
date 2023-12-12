@@ -20,8 +20,5 @@ public class AppHost : AppHostBase, IHostingStartup
     {
         SetConfig(new HostConfig {
         });
-
-        Config.AllowFileExtensions.Add("json");
-        Config.AllowFileExtensions.Add("dat");
     }
 }
