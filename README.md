@@ -10,7 +10,7 @@ This template will help get you started developing with Blazor WASM Apps for Ser
 ```bash
 $ dotnet tool install -g x
 
-$ x new blazor-wasm ProjectName
+$ x new LegacyTemplates/blazor-wasm ProjectName
 ```
 
 ## Getting Started
