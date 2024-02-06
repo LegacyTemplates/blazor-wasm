@@ -8,6 +8,7 @@ using MyApp.Components.Account;
 using MyApp.Data;
 using ServiceStack.Blazor;
 using System.Net;
+using MyApp.ServiceInterface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,6 +58,17 @@ services.AddScoped(c => new HttpClient { BaseAddress = new Uri(baseUrl) });
 services.AddBlazorServerIdentityApiClient(baseUrl);
 services.AddLocalStorage();
 
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
+
+// Register all services
+services.AddServiceStack(typeof(MyServices).Assembly, c => {
+    c.AddSwagger(o => {
+        //o.AddJwtBearer();
+        o.AddBasicAuth();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -64,6 +76,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
     app.UseMigrationsEndPoint();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 else
 {
@@ -85,7 +99,10 @@ app.MapRazorComponents<App>()
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
 
-app.UseServiceStack(new AppHost());
+app.UseServiceStack(new AppHost(), options =>
+{
+    options.MapEndpoints();
+});
 
 BlazorConfig.Set(new()
 {
