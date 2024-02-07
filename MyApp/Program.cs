@@ -30,7 +30,6 @@ services.AddAuthentication(options =>
         options.DefaultScheme = IdentityConstants.ApplicationScheme;
         options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
     })
-    .AddBasicAuth<ApplicationUser>()
     .AddIdentityCookies();
 services.AddDataProtection()
     .PersistKeysToFileSystem(new DirectoryInfo("App_Data"));
@@ -59,15 +58,8 @@ services.AddScoped(c => new HttpClient { BaseAddress = new Uri(baseUrl) });
 services.AddBlazorServerIdentityApiClient(baseUrl);
 services.AddLocalStorage();
 
-services.AddEndpointsApiExplorer();
-services.AddSwaggerGen();
-
 // Register all services
-services.AddServiceStack(typeof(MyServices).Assembly, c => {
-    c.AddSwagger(o => {
-        o.AddBasicAuth();
-    });
-});
+services.AddServiceStack(typeof(MyServices).Assembly);
 
 var app = builder.Build();
 
@@ -76,8 +68,6 @@ if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
     app.UseMigrationsEndPoint();
-    app.UseSwagger();
-    app.UseSwaggerUI();
 }
 else
 {
