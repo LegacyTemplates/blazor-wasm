@@ -9,24 +9,20 @@ namespace MyApp;
 public class ConfigureMarkdown : IHostingStartup
 {
     public void Configure(IWebHostBuilder builder) => builder
-        .ConfigureServices((context, services) =>
-        {
+        .ConfigureServices((context, services) => {
             context.Configuration.GetSection(nameof(AppConfig)).Bind(AppConfig.Instance);
             services.AddSingleton(AppConfig.Instance);
             services.AddSingleton<MarkdownPages>();
             services.AddSingleton<MarkdownVideos>();
         })
-        .ConfigureAppHost(
-            appHost => appHost.Plugins.Add(new CleanUrlsFeature()),
-            afterPluginsLoaded: appHost =>
-            {
-                var pages = appHost.Resolve<MarkdownPages>();
-                var videos = appHost.Resolve<MarkdownVideos>();
+        .ConfigureAppHost(afterPluginsLoaded: appHost => {
+            var pages = appHost.Resolve<MarkdownPages>();
+            var videos = appHost.Resolve<MarkdownVideos>();
 
-                pages.LoadFrom("_pages");
-                videos.LoadFrom("_videos");
-                AppConfig.Instance.GitPagesBaseUrl ??= ResolveGitBlobBaseUrl(appHost.ContentRootDirectory);
-            });
+            pages.LoadFrom("_pages");
+            videos.LoadFrom("_videos");
+            AppConfig.Instance.GitPagesBaseUrl ??= ResolveGitBlobBaseUrl(appHost.ContentRootDirectory);
+        });
 
     private string? ResolveGitBlobBaseUrl(IVirtualDirectory contentDir)
     {
