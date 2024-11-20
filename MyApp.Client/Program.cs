@@ -9,13 +9,11 @@ builder.Services.AddAuthorizationCore();
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();
 
-var baseUrl = "https://blazor-wasm.web-templates.io";
-
 // Use / for local or CDN resources
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(baseUrl) });
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 var apiBaseUrl = builder.Configuration["ApiBaseUrl"] ?? builder.HostEnvironment.BaseAddress;
-builder.Services.AddBlazorApiClient(baseUrl);
+builder.Services.AddBlazorApiClient(apiBaseUrl);
 builder.Services.AddLocalStorage();
 
 await builder.Build().RunAsync();
