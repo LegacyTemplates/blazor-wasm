@@ -60,11 +60,6 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install npm dependencies
-        if: steps.check_client.outputs.client_exists == 'true'
-        working-directory: ./MyApp.Client
-        run: npm install
-
       - name: Install x tool
         run: dotnet tool install -g x
 
