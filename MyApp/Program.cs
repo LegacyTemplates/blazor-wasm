@@ -8,12 +8,19 @@ using MyApp.Components.Account;
 using MyApp.Data;
 using ServiceStack.Blazor;
 using System.Net;
+using Microsoft.AspNetCore.HttpOverrides;
 using MyApp.ServiceInterface;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 var config = builder.Configuration;
+
+services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders =
+        ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+});
 
 // Add services to the container.
 services.AddRazorComponents()
@@ -65,6 +72,7 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
+    app.UseForwardedHeaders();
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
