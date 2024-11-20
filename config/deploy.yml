@@ -18,6 +18,7 @@ servers:
 proxy:
   ssl: true
   host: my-app.example.com
+  forward_headers: true
   # kamal-proxy connects to your container over port 80, use `app_port` to specify a different port.
   app_port: 8080
 
