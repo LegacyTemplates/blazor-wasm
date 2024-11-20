@@ -14,8 +14,7 @@ public class AppHost() : AppHostBase("MyApp"), IHostingStartup
     public override void Configure()
     {
         SetConfig(new HostConfig {
-            IgnorePathInfoPrefixes = { "/appsettings", "/_framework" },
-            DebugMode = true
+            IgnorePathInfoPrefixes = { "/appsettings", "/_framework" }
         });
     }
 }
