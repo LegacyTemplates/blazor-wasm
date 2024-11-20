@@ -15,6 +15,7 @@ public class AppHost() : AppHostBase("MyApp"), IHostingStartup
     {
         SetConfig(new HostConfig {
             IgnorePathInfoPrefixes = { "/appsettings", "/_framework" },
+            DebugMode = true
         });
     }
 }
