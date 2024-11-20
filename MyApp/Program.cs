@@ -62,11 +62,6 @@ services.AddLocalStorage();
 services.AddServiceStack(typeof(MyServices).Assembly);
 
 var app = builder.Build();
-app.Use((context, next) =>
-{
-    context.Request.Scheme = "https";
-    return next(context);
-});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
