@@ -8,6 +8,7 @@ using MyApp.Components.Account;
 using MyApp.Data;
 using ServiceStack.Blazor;
 using System.Net;
+using Microsoft.AspNetCore.HttpOverrides;
 using MyApp.ServiceInterface;
 
 var builder = WebApplication.CreateBuilder(args);
