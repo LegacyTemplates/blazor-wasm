@@ -4,6 +4,7 @@ service: my-app
 # Name of the container image.
 image: my-user/myapp
 
+# Required for use of ASP.NET Core with Kamal-Proxy.
 env:
   ASPNETCORE_FORWARDEDHEADERS_ENABLED: true
 
@@ -24,11 +25,6 @@ proxy:
   forward_headers: true
   # kamal-proxy connects to your container over port 80, use `app_port` to specify a different port.
   app_port: 8080
-
-  healthcheck:
-    interval: 3
-    path: /metadata
-    timeout: 3
 
 # Credentials for your image host.
 registry:
