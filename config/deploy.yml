@@ -6,7 +6,10 @@ image: my-user/myapp
 
 # Required for use of ASP.NET Core with Kamal-Proxy.
 env:
-  ASPNETCORE_FORWARDEDHEADERS_ENABLED: true
+  clear:
+    ASPNETCORE_FORWARDEDHEADERS_ENABLED: true
+  secret:
+    - SERVICESTACK_LICENSE
 
 # Deploy to these servers.
 servers:
@@ -22,7 +25,6 @@ servers:
 proxy:
   ssl: true
   host: my-app.example.com
-  forward_headers: true
   # kamal-proxy connects to your container over port 80, use `app_port` to specify a different port.
   app_port: 8080
 
