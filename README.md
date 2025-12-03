@@ -4,11 +4,11 @@
 
 [![](https://raw.githubusercontent.com/ServiceStack/Assets/master/csharp-templates/blazor.png)](http://blazor.web-templates.io/)
 
-> Browse [source code](https://github.com/NetCoreTemplates/blazor), view live demo [blazor-wasm.web-templates.io](http://blazor-wasm.web-templates.io) and install with [dotnet-new](https://docs.servicestack.net/dotnet-new):
+> Browse [source code](https://github.com/LegacyTemplates/blazor), view live demo [blazor-wasm.web-templates.io](http://blazor-wasm.web-templates.io) and install with [dotnet-new](https://docs.servicestack.net/dotnet-new):
 
     $ dotnet tool install -g x
 
-    $ x new blazor-wasm ProjectName
+    $ x new LegacyTemplates/blazor-wasm ProjectName
 
 Alternatively write new project files directly into an empty repository, using the Directory Name as the ProjectName:
 
